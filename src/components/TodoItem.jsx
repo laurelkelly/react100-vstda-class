@@ -14,6 +14,7 @@ class TodoItem extends Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.TodoItemColor = this.TodoItemColor.bind(this);
         this.FormColor = this.FormColor.bind(this);
+        this.completedStrikethrough = this.completedStrikethrough.bind(this);
     }
 
     handleInputChange(event) {
@@ -54,6 +55,14 @@ class TodoItem extends Component {
             return 'list-group-item-warning clearfix'
         } else if (priority == 4) {
             return 'list-group-item-success clearfix'
+        }
+    }
+
+    completedStrikethrough (completed) {
+        if (completed) {
+            return "line-through";
+        } else {
+            "none"
         }
     }
 
@@ -108,7 +117,10 @@ class TodoItem extends Component {
                         value='1' 
                         defaultChecked={this.props.completed}
                         onChange={() => this.props.toggleTaskCompleted(this.props.id)}
-                    /><strong className='check-label'>
+                    /><strong 
+                        className='check-label'
+                        style={{ textDecoration: this.completedStrikethrough(this.props.completed) }}
+                    >
                         {this.props.name}
                     </strong>
                 </label>

@@ -25,27 +25,19 @@ class App extends Component {
     };
     const tasks = this.state.tasks.concat([newTask]);
     this.setState({ tasks: tasks });
-    console.log(this.state.tasks)
   }
 
   toggleTaskCompleted(id) {
-    const updatedTasks = this.state.tasks
-    console.log(this.state.tasks)
-    // .map(task => {
-    //   // if this task has the same ID as the edited task
-    //   if (id == task.id) {
-    //     // use object spread to make a new object
-    //     // whose `completed` prop has been inverted
-    //     console.log(id)
-    //     return {
-    //       ...task, 
-    //       completed: !task.completed
-    //     }
-    //   }
-    //   return task;
-    // });
-    // this.setState({ tasks: updatedTasks });
-    // console.log(this.state.tasks[0])
+    const updatedTasks = this.state.tasks;
+    updatedTasks.map((task) => {
+      // if this task has the same ID as the edited task
+      if (id == task.id) {
+        // use object spread to make a new object
+        // whose `completed` prop has been inverted
+        task.completed = !task.completed;
+      }
+    });
+    this.setState({ tasks: updatedTasks });
   }
 
   deleteTask(id) {

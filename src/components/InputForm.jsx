@@ -22,6 +22,10 @@ class InputForm extends Component {
         event.preventDefault();
         if(this.state.desc1 === '') return;
         this.props.addTask(this.state.desc1, this.state.sel1);
+        this.setState({
+            desc1: '',
+            sel1: '1'
+        });
     }
 
     render() {
